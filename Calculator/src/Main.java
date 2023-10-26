@@ -403,7 +403,7 @@ class Calculator implements ActionListener {
                     this.textField.setText(Double.toString(Ctg));
                 } else if (source == this.buttonCos) {
                     this.number = Double.parseDouble(this.textField.getText());
-                    Ctg = 1 - Math.pow(Math.sin(Math.toRadians(this.number)), 2.0);
+                    Ctg = Math.sqrt(1 - Math.pow(Math.sin(Math.toRadians(this.number)), 2.0));
                     this.label.setText("Cos " + this.number);
                     this.textField.setText(Double.toString(Ctg));
                 } else if (source == this.buttonTan) {
