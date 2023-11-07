@@ -9,12 +9,9 @@ import java.awt.Font;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
+import javax.swing.*;
+
+import static java.lang.Math.*;
 
 class Calculator implements ActionListener {
     double number;
@@ -70,7 +67,8 @@ class Calculator implements ActionListener {
         this.frame.setResizable(false);
         this.frame.setLocationRelativeTo((Component)null);
         this.frame.setVisible(true);
-        this.frame.setDefaultCloseOperation(3);
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
     }
 
     public void addComponents() {
@@ -78,19 +76,19 @@ class Calculator implements ActionListener {
         this.label.setForeground(Color.black);
         this.frame.add(this.label);
         this.textField.setBounds(30, 40, 270, 40);
-        this.textField.setFont(new Font("Arial", 1, 20));
+        this.textField.setFont(new Font("Arial", Font.BOLD, 20));
         this.textField.setEditable(false);
         this.textField.setHorizontalAlignment(4);
         this.frame.add(this.textField);
         this.onRadioButton.setBounds(10, 95, 60, 40);
         this.onRadioButton.setSelected(true);
-        this.onRadioButton.setFont(new Font("Arial", 1, 9));
+        this.onRadioButton.setFont(new Font("Arial", Font.BOLD, 9));
         this.onRadioButton.setBackground(this.pink2);
         this.onRadioButton.setForeground(Color.WHITE);
         this.frame.add(this.onRadioButton);
         this.offRadioButton.setBounds(10, 120, 60, 40);
         this.offRadioButton.setSelected(false);
-        this.offRadioButton.setFont(new Font("Arial", 1, 9));
+        this.offRadioButton.setFont(new Font("Arial", Font.BOLD, 9));
         this.offRadioButton.setBackground(this.pink2);
         this.offRadioButton.setForeground(Color.WHITE);
         this.frame.add(this.offRadioButton);
@@ -98,122 +96,122 @@ class Calculator implements ActionListener {
         buttonGroup.add(this.onRadioButton);
         buttonGroup.add(this.offRadioButton);
         this.buttonOne.setBounds(10, 350, 60, 40);
-        this.buttonOne.setFont(new Font("Arial", 1, 20));
+        this.buttonOne.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonOne.setBackground(this.pink4);
         this.buttonOne.setForeground(Color.white);
         this.frame.add(this.buttonOne);
         this.buttonTwo.setBounds(80, 350, 60, 40);
-        this.buttonTwo.setFont(new Font("Arial", 1, 20));
+        this.buttonTwo.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonTwo.setBackground(this.pink4);
         this.buttonTwo.setForeground(Color.white);
         this.frame.add(this.buttonTwo);
         this.buttonThree.setBounds(150, 350, 60, 40);
-        this.buttonThree.setFont(new Font("Arial", 1, 20));
+        this.buttonThree.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonThree.setBackground(this.pink4);
         this.buttonThree.setForeground(Color.white);
         this.frame.add(this.buttonThree);
         this.buttonFour.setBounds(10, 290, 60, 40);
-        this.buttonFour.setFont(new Font("Arial", 1, 20));
+        this.buttonFour.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonFour.setBackground(this.pink4);
         this.buttonFour.setForeground(Color.white);
         this.frame.add(this.buttonFour);
         this.buttonFive.setBounds(80, 290, 60, 40);
-        this.buttonFive.setFont(new Font("Arial", 1, 20));
+        this.buttonFive.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonFive.setBackground(this.pink4);
         this.buttonFive.setForeground(Color.white);
         this.frame.add(this.buttonFive);
         this.buttonSix.setBounds(150, 290, 60, 40);
-        this.buttonSix.setFont(new Font("Arial", 1, 20));
+        this.buttonSix.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonSix.setBackground(this.pink4);
         this.buttonSix.setForeground(Color.white);
         this.frame.add(this.buttonSix);
         this.buttonSeven.setBounds(10, 230, 60, 40);
-        this.buttonSeven.setFont(new Font("Arial", 1, 20));
+        this.buttonSeven.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonSeven.setBackground(this.pink4);
         this.buttonSeven.setForeground(Color.white);
         this.frame.add(this.buttonSeven);
         this.buttonEight.setBounds(80, 230, 60, 40);
-        this.buttonEight.setFont(new Font("Arial", 1, 20));
+        this.buttonEight.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonEight.setBackground(this.pink4);
         this.buttonEight.setForeground(Color.white);
         this.frame.add(this.buttonEight);
         this.buttonNine.setBounds(150, 230, 60, 40);
-        this.buttonNine.setFont(new Font("Arial", 1, 20));
+        this.buttonNine.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonNine.setBackground(this.pink4);
         this.buttonNine.setForeground(Color.white);
         this.frame.add(this.buttonNine);
         this.buttonDot.setBounds(150, 410, 60, 40);
-        this.buttonDot.setFont(new Font("Arial", 1, 20));
+        this.buttonDot.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonDot.setBackground(this.pink4);
         this.buttonDot.setForeground(Color.white);
         this.frame.add(this.buttonDot);
         this.buttonZero.setBounds(10, 410, 130, 40);
-        this.buttonZero.setFont(new Font("Arial", 1, 20));
+        this.buttonZero.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonZero.setBackground(this.pink4);
         this.buttonZero.setForeground(Color.white);
         this.frame.add(this.buttonZero);
         this.buttonEqual.setBounds(220, 350, 60, 100);
-        this.buttonEqual.setFont(new Font("Arial", 1, 20));
+        this.buttonEqual.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonEqual.setBackground(this.pink3);
         this.frame.add(this.buttonEqual);
         this.buttonDiv.setBounds(220, 110, 60, 40);
-        this.buttonDiv.setFont(new Font("Arial", 1, 20));
+        this.buttonDiv.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonDiv.setBackground(this.pink3);
         this.frame.add(this.buttonDiv);
         this.buttonSqrt.setBounds(10, 170, 60, 40);
-        this.buttonSqrt.setFont(new Font("Arial", 1, 18));
+        this.buttonSqrt.setFont(new Font("Arial", Font.BOLD, 18));
         this.buttonSqrt.setBackground(this.pink3);
         this.frame.add(this.buttonSqrt);
         this.buttonMul.setBounds(220, 170, 60, 40);
-        this.buttonMul.setFont(new Font("Arial", 1, 20));
+        this.buttonMul.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonMul.setBackground(this.pink3);
         this.frame.add(this.buttonMul);
         this.buttonMinus.setBounds(220, 230, 60, 40);
-        this.buttonMinus.setFont(new Font("Arial", 1, 20));
+        this.buttonMinus.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonMinus.setBackground(this.pink3);
         this.frame.add(this.buttonMinus);
         this.buttonPlus.setBounds(220, 290, 60, 40);
-        this.buttonPlus.setFont(new Font("Arial", 1, 20));
+        this.buttonPlus.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonPlus.setBackground(this.pink3);
         this.frame.add(this.buttonPlus);
         this.buttonSquare.setBounds(80, 170, 60, 40);
-        this.buttonSquare.setFont(new Font("Arial", 1, 20));
+        this.buttonSquare.setFont(new Font("Arial", Font.BOLD, 20));
         this.buttonSquare.setBackground(this.pink3);
         this.frame.add(this.buttonSquare);
         this.buttonReciprocal.setBounds(150, 170, 60, 40);
-        this.buttonReciprocal.setFont(new Font("Arial", 1, 15));
+        this.buttonReciprocal.setFont(new Font("Arial", Font.BOLD, 15));
         this.buttonReciprocal.setBackground(this.pink3);
         this.frame.add(this.buttonReciprocal);
         this.buttonDelete.setBounds(150, 110, 60, 40);
-        this.buttonDelete.setFont(new Font("Arial", 1, 12));
+        this.buttonDelete.setFont(new Font("Arial", Font.BOLD, 12));
         this.buttonDelete.setBackground(this.pink1);
         this.buttonDelete.setForeground(Color.white);
         this.frame.add(this.buttonDelete);
         this.buttonClear.setBounds(80, 110, 60, 40);
-        this.buttonClear.setFont(new Font("Arial", 1, 12));
+        this.buttonClear.setFont(new Font("Arial", Font.BOLD, 12));
         this.buttonClear.setBackground(this.pink1);
         this.buttonClear.setForeground(Color.white);
         this.frame.add(this.buttonClear);
         this.buttonSin.setBounds(290, 110, 60, 70);
-        this.buttonSin.setFont(new Font("Arial", 1, 12));
+        this.buttonSin.setFont(new Font("Arial", Font.BOLD, 12));
         this.buttonSin.setBackground(this.pink4);
         this.buttonSin.setForeground(Color.white);
         this.buttonSin.setEnabled(false);
         this.frame.add(this.buttonSin);
         this.buttonCos.setBounds(290, 200, 60, 70);
-        this.buttonCos.setFont(new Font("Arial", 1, 12));
+        this.buttonCos.setFont(new Font("Arial", Font.BOLD, 12));
         this.buttonCos.setBackground(this.pink4);
         this.buttonCos.setForeground(Color.white);
         this.buttonCos.setEnabled(false);
         this.frame.add(this.buttonCos);
         this.buttonTan.setBounds(290, 290, 60, 70);
-        this.buttonTan.setFont(new Font("Arial", 1, 12));
+        this.buttonTan.setFont(new Font("Arial", Font.BOLD, 12));
         this.buttonTan.setBackground(this.pink4);
         this.buttonTan.setForeground(Color.white);
         this.buttonTan.setEnabled(false);
         this.frame.add(this.buttonTan);
         this.buttonCtg.setBounds(290, 380, 60, 70);
-        this.buttonCtg.setFont(new Font("Arial", 1, 12));
+        this.buttonCtg.setFont(new Font("Arial", Font.BOLD, 12));
         this.buttonCtg.setBackground(this.pink4);
         this.buttonCtg.setForeground(Color.white);
         this.buttonCtg.setEnabled(false);
@@ -328,94 +326,101 @@ class Calculator implements ActionListener {
                 this.label.setText(str + "/");
                 this.calculation = 4;
             } else {
-                Double Ctg;
+                double Ctg;
                 if (source == this.buttonSqrt) {
                     this.number = Double.parseDouble(this.textField.getText());
-                    Ctg = Math.sqrt(this.number);
+                    Ctg = sqrt(this.number);
                     this.textField.setText(Double.toString(Ctg));
-                } else if (source == this.buttonSquare) {
-                    str = this.textField.getText();
-                    this.number = Double.parseDouble(this.textField.getText());
-                    double square = Math.pow(this.number, 2.0);
-                    String string = Double.toString(square);
-                    if (string.endsWith(".0")) {
-                        this.textField.setText(string.replace(".0", ""));
-                    } else {
-                        this.textField.setText(string);
+                } else {
+                    String string;
+                    double reciprocal;
+                    if (source == this.buttonSquare) {
+                        str = this.textField.getText();
+                        this.number = Double.parseDouble(this.textField.getText());
+                        reciprocal = pow(this.number, 2.0);
+                        string = Double.toString(reciprocal);
+                        if (string.endsWith(".0")) {
+                            this.textField.setText(string.replace(".0", ""));
+                        } else {
+                            this.textField.setText(string);
+                        }
+
+                        this.label.setText("(sqr)" + str);
+                    } else if (source == this.buttonReciprocal) {
+                        this.number = Double.parseDouble(this.textField.getText());
+                        reciprocal = 1.0 / this.number;
+                        string = Double.toString(reciprocal);
+                        if (string.endsWith(".0")) {
+                            this.textField.setText(string.replace(".0", ""));
+                        } else {
+                            this.textField.setText(string);
+                        }
+                    } else if (source == this.buttonEqual) {
+                        switch (this.calculation) {
+                            case 1 -> {
+                                this.answer = this.number + Double.parseDouble(this.textField.getText());
+                                if (Double.toString(this.answer).endsWith(".0")) {
+                                    this.textField.setText(Double.toString(this.answer).replace(".0", ""));
+                                } else {
+                                    this.textField.setText(Double.toString(this.answer));
+                                }
+                                this.label.setText("");
+                            }
+                            case 2 -> {
+                                this.answer = this.number - Double.parseDouble(this.textField.getText());
+                                if (Double.toString(this.answer).endsWith(".0")) {
+                                    this.textField.setText(Double.toString(this.answer).replace(".0", ""));
+                                } else {
+                                    this.textField.setText(Double.toString(this.answer));
+                                }
+                                this.label.setText("");
+                            }
+                            case 3 -> {
+                                this.answer = this.number * Double.parseDouble(this.textField.getText());
+                                if (Double.toString(this.answer).endsWith(".0")) {
+                                    this.textField.setText(Double.toString(this.answer).replace(".0", ""));
+                                } else {
+                                    this.textField.setText(Double.toString(this.answer));
+                                }
+                                this.label.setText("");
+                            }
+                            case 4 -> {
+                                this.answer = this.number / Double.parseDouble(this.textField.getText());
+                                if (Double.toString(this.answer).endsWith(".0")) {
+                                    this.textField.setText(Double.toString(this.answer).replace(".0", ""));
+                                } else {
+                                    this.textField.setText(Double.toString(this.answer));
+                                }
+                                this.label.setText("");
+                            }
+                        }
+                    } else if (source == this.buttonSin) {
+                        this.number = Double.parseDouble(this.textField.getText());
+                        Ctg = sin(toRadians(this.number));
+                        this.label.setText("Sin " + this.number);
+                        this.textField.setText(Double.toString(Ctg));
+                    } else if (source == this.buttonCos) {
+                        this.number = Double.parseDouble(this.textField.getText());
+                        Ctg = sqrt(1.0 - pow(sin(toRadians(this.number)), 2.0));
+                        this.label.setText("Cos " + this.number);
+                        this.textField.setText(Double.toString(Ctg));
+                    } else if (source == this.buttonTan) {
+                        this.number = Double.parseDouble(this.textField.getText());
+                        Ctg = sin(toRadians(this.number)) / cos(toRadians(this.number));
+                        this.label.setText("Tan " + this.number);
+                        if (this.number == 45)
+                            {this.textField.setText(Double.toString(1));}
+                                else if (this.number == 90) {this.textField.setText("infinity");}
+                                else {this.textField.setText(Double.toString(Ctg));}
+                    } else if (source == this.buttonCtg) {
+                        this.number = Double.parseDouble(this.textField.getText());
+                        Ctg = cos(toRadians(this.number)) / sin(toRadians(this.number));
+                        this.label.setText("Ctg " + this.number);
+                        if (this.number == 45)
+                        {this.textField.setText(Double.toString(1));}
+                        else if (this.number == 0) {this.textField.setText("infinity");}
+                        else {this.textField.setText(Double.toString(Ctg));}
                     }
-
-                    this.label.setText("(sqr)" + str);
-                } else if (source == this.buttonReciprocal) {
-                    this.number = Double.parseDouble(this.textField.getText());
-                    double reciprocal = 1.0 / this.number;
-                    String string = Double.toString(reciprocal);
-                    if (string.endsWith(".0")) {
-                        this.textField.setText(string.replace(".0", ""));
-                    } else {
-                        this.textField.setText(string);
-                    }
-                } else if (source == this.buttonEqual) {
-                    switch (this.calculation) {
-                        case 1:
-                            this.answer = this.number + Double.parseDouble(this.textField.getText());
-                            if (Double.toString(this.answer).endsWith(".0")) {
-                                this.textField.setText(Double.toString(this.answer).replace(".0", ""));
-                            } else {
-                                this.textField.setText(Double.toString(this.answer));
-                            }
-
-                            this.label.setText("");
-                            break;
-                        case 2:
-                            this.answer = this.number - Double.parseDouble(this.textField.getText());
-                            if (Double.toString(this.answer).endsWith(".0")) {
-                                this.textField.setText(Double.toString(this.answer).replace(".0", ""));
-                            } else {
-                                this.textField.setText(Double.toString(this.answer));
-                            }
-
-                            this.label.setText("");
-                            break;
-                        case 3:
-                            this.answer = this.number * Double.parseDouble(this.textField.getText());
-                            if (Double.toString(this.answer).endsWith(".0")) {
-                                this.textField.setText(Double.toString(this.answer).replace(".0", ""));
-                            } else {
-                                this.textField.setText(Double.toString(this.answer));
-                            }
-
-                            this.label.setText("");
-                            break;
-                        case 4:
-                            this.answer = this.number / Double.parseDouble(this.textField.getText());
-                            if (Double.toString(this.answer).endsWith(".0")) {
-                                this.textField.setText(Double.toString(this.answer).replace(".0", ""));
-                            } else {
-                                this.textField.setText(Double.toString(this.answer));
-                            }
-
-                            this.label.setText("");
-                    }
-                } else if (source == this.buttonSin) {
-                    this.number = Double.parseDouble(this.textField.getText());
-                    Ctg = Math.sin(Math.toRadians(this.number));
-                    this.label.setText("Sin " + this.number);
-                    this.textField.setText(Double.toString(Ctg));
-                } else if (source == this.buttonCos) {
-                    this.number = Double.parseDouble(this.textField.getText());
-                    Ctg = Math.sqrt(1 - Math.pow(Math.sin(Math.toRadians(this.number)), 2.0));
-                    this.label.setText("Cos " + this.number);
-                    this.textField.setText(Double.toString(Ctg));
-                } else if (source == this.buttonTan) {
-                    this.number = Double.parseDouble(this.textField.getText());
-                    Ctg = Math.tan(Math.toRadians(this.number));
-                    this.label.setText("Tan " + this.number);
-                    this.textField.setText(Double.toString(Ctg));
-                } else if (source == this.buttonCtg) {
-                    this.number = Double.parseDouble(this.textField.getText());
-                    Ctg = 1.0 / Math.tan(Math.toRadians(this.number));
-                    this.label.setText("Ctg " + this.number);
-                    this.textField.setText(Double.toString(Ctg));
                 }
             }
         }
@@ -489,4 +494,5 @@ class Calculator implements ActionListener {
     public static void main(String[] args) {
         new Calculator();
     }
+
 }
