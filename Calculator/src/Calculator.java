@@ -398,12 +398,18 @@ class Calculator implements ActionListener {
                         this.number = Double.parseDouble(this.textField.getText());
                         Ctg = sin(toRadians(this.number));
                         this.label.setText("Sin " + this.number);
-                        this.textField.setText(Double.toString(Ctg));
+                        if (((this.number % 30 == 0) && (this.number % 60 != 0)) || (this.number % 90 == 0))
+                        {Ctg = Math.round(Ctg);
+                            this.textField.setText(Double.toString(Ctg));}
+                        else {this.textField.setText(Double.toString(Ctg));}
                     } else if (source == this.buttonCos) {
                         this.number = Double.parseDouble(this.textField.getText());
                         Ctg = sqrt(1.0 - pow(sin(toRadians(this.number)), 2.0));
                         this.label.setText("Cos " + this.number);
-                        this.textField.setText(Double.toString(Ctg));
+                        if (((this.number % 60 == 0) && (this.number % 30 != 0) ) || (this.number % 90 == 0))
+                        {Ctg = Math.round(Ctg);
+                                this.textField.setText(Double.toString(Ctg));}
+                        else {this.textField.setText(Double.toString(Ctg));}
                     } else if (source == this.buttonTan) {
                         this.number = Double.parseDouble(this.textField.getText());
                         Ctg = sin(toRadians(this.number)) / cos(toRadians(this.number));
