@@ -398,33 +398,50 @@ class Calculator implements ActionListener {
                         this.number = Double.parseDouble(this.textField.getText());
                         Ctg = sin(toRadians(this.number));
                         this.label.setText("Sin " + this.number);
-                        if (((this.number % 30 == 0) && (this.number % 60 != 0)) || (this.number % 90 == 0))
-                        {Ctg = Math.round(Ctg);
-                            this.textField.setText(Double.toString(Ctg));}
+                        if ((this.number % 30 == 0) && ((!(this.number % 60 == 0)) ||  ((this.number % 90 == 0) && !(this.number % 180 == 0))))
+                        {this.textField.setText(String.format("%.1g%n", Ctg));}
+                        else if ((this.number == 0) || (this.number % 180 == 0))
+                        {this.textField.setText(Double.toString(0));}
                         else {this.textField.setText(Double.toString(Ctg));}
+
+
+
                     } else if (source == this.buttonCos) {
                         this.number = Double.parseDouble(this.textField.getText());
-                        Ctg = sqrt(1.0 - pow(sin(toRadians(this.number)), 2.0));
+                        Ctg = cos(toRadians(this.number));
                         this.label.setText("Cos " + this.number);
-                        if (((this.number % 60 == 0) && (this.number % 30 != 0) ) || (this.number % 90 == 0))
-                        {Ctg = Math.round(Ctg);
-                                this.textField.setText(Double.toString(Ctg));}
+                        if ((this.number % 180 == 0)  ||  (this.number % 60 == 0) || (this.number == 0) )
+                        {this.textField.setText(String.format("%.1g%n", Ctg));}
+                        else if (((this.number == 90) || (this.number % 270 == 0)) && (!(this.number % 180 == 0)))
+                        {this.textField.setText(Double.toString(0));}
                         else {this.textField.setText(Double.toString(Ctg));}
+
+
+
                     } else if (source == this.buttonTan) {
                         this.number = Double.parseDouble(this.textField.getText());
                         Ctg = sin(toRadians(this.number)) / cos(toRadians(this.number));
                         this.label.setText("Tan " + this.number);
-                        if (this.number == 45)
-                            {this.textField.setText(Double.toString(1));}
-                                else if (this.number == 90) {this.textField.setText("infinity");}
+                        if ((this.number % 45 == 0) && (! (this.number % 90 == 0)))
+                            {this.textField.setText(String.format("%.1g%n", Ctg));}
+                                else if ((this.number % 90 == 0) && (! (this.number % 180 == 0)))
+                        {this.textField.setText("infinity");}
+                        else if ((this.number == 0)  || (this.number % 180 == 0))
+                        {this.textField.setText(Double.toString(0));}
                                 else {this.textField.setText(Double.toString(Ctg));}
+
+
+
                     } else if (source == this.buttonCtg) {
                         this.number = Double.parseDouble(this.textField.getText());
                         Ctg = cos(toRadians(this.number)) / sin(toRadians(this.number));
                         this.label.setText("Ctg " + this.number);
-                        if (this.number == 45)
-                        {this.textField.setText(Double.toString(1));}
-                        else if (this.number == 0) {this.textField.setText("infinity");}
+                        if ((this.number % 45 == 0) && (! (this.number % 90 == 0)))
+                        {this.textField.setText(String.format("%.1g%n",Ctg));}
+                        else if ((this.number == 0) || (this.number % 180 == 0))
+                        {this.textField.setText("infinity");}
+                        else if (((this.number % 90 == 0)  || (this.number % 270 == 0)) && (! (this.number % 180 == 0)))
+                        {this.textField.setText(Double.toString(0));}
                         else {this.textField.setText(Double.toString(Ctg));}
                     }
                 }
