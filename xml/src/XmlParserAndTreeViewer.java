@@ -1,3 +1,10 @@
+
+//XML-парсер
+
+//Разработать парсер xml-файлов, 
+//в которых будут отсутствовать параметры тегов. Отобразить содержимое с помощью компонента Swing JTree
+
+
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
 import javax.swing.*;
