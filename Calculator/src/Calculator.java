@@ -1,7 +1,6 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
+//Создание калькулятора с графическим интерфейсом
+//Реализовать стандартный калькулятор с четырьмя арифметическими действиями с визуальным интерфейсом средствами java.awt и  javax.swing.
+// КОД СДЕЛАН СОВМЕСТНО С @IRROMORD(Жуковец Иулиания 3Б) для задания по Стандартизация и унификация информационных технологий
 
 import java.awt.Color;
 import java.awt.Component;
@@ -10,10 +9,14 @@ import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
 import static java.lang.Math.*;
 
+//Создать класс Calculator, который реализует интерфейс ActionListener
 class Calculator implements ActionListener {
+    //Объявить поля класса: number (для хранения числа), 
+    //answer (для хранения ответа), calculation (для выполнения операций), 
+    //frame (для создания окна), label (для отображения текста), textField (для ввода текста), 
+    //onRadioButton и offRadioButton (для выбора режима), кнопки для цифр, операций и математических функций.
     double number;
     double answer;
     int calculation;
@@ -47,17 +50,19 @@ class Calculator implements ActionListener {
     JButton buttonCos = new JButton("Cos");
     JButton buttonTan = new JButton("Tng");
     JButton buttonCtg = new JButton("Ctg");
+    //Создание объектов класса Color для использования различных цветов.
     Color pink1 = new Color(204, 78, 132);
     Color pink2 = new Color(235, 141, 172);
     Color pink3 = new Color(232, 102, 158);
     Color pink4 = new Color(247, 161, 191);
-
+//Создание конструктора класса Calculator, в котором вызываются методы prepareGUI, addComponents и addActionEvent.
     Calculator() {
         this.prepareGUI();
         this.addComponents();
         this.addActionEvent();
     }
-
+//Создание метода prepareGUI, в котором создается окно (frame), устанавливается его размер, цвет фона, 
+//запрещается изменение размеров, устанавливается видимость и обработчик закрытия окна
     public void prepareGUI() {
         this.frame = new JFrame();
         this.frame.setTitle("Калькулятор By Коваль и Жуковец");
@@ -70,7 +75,8 @@ class Calculator implements ActionListener {
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
-
+//Метод addComponents() используется для добавления различных компонентов (например, меток, текстовых полей, кнопок) на форму.
+//Все компоненты добавляются на основное окно (frame), где они будут отображаться при запуске программы.
     public void addComponents() {
         this.label.setBounds(250, 0, 50, 50);
         this.label.setForeground(Color.black);
@@ -247,7 +253,9 @@ class Calculator implements ActionListener {
         this.buttonTan.addActionListener(this);
         this.buttonCtg.addActionListener(this);
     }
-
+//Этот код представляет метод, который выполняется при возникновении события. 
+//Когда происходит событие, объект `e` хранит информацию о событии, и метод `getSource()` возвращает источник события. 
+//Затем проверяется источник события, и в зависимости от этого выполняются определенные действия.
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == this.onRadioButton) {
@@ -449,7 +457,7 @@ class Calculator implements ActionListener {
         }
 
     }
-
+//Активированное арифметическое/алгеброическое меню
     public void enable() {
         this.onRadioButton.setEnabled(false);
         this.offRadioButton.setEnabled(true);
@@ -481,7 +489,7 @@ class Calculator implements ActionListener {
         this.buttonTan.setEnabled(false);
         this.buttonCtg.setEnabled(false);
     }
-
+//Активированное тригонометрическое меню
     public void disable() {
         this.onRadioButton.setEnabled(true);
         this.offRadioButton.setEnabled(false);
