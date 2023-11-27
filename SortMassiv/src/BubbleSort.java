@@ -1,7 +1,15 @@
+//Сортировка массива
+
+//Реализовать сортировку массива методом пузырька
+
+
+
 public class BubbleSort {
     public static void main(String[] args) {
+        //Создание и инициализация массива array
         int[] array = {64, 34, 25, 12, 22, 11, 90};
         System.out.println("Исходный массив:");
+        //Вызов метода printArray для вывода массива array на консоль
         printArray(array);
         bubbleSort(array);
         System.out.println("\nОтсортированный массив:");
@@ -9,7 +17,7 @@ public class BubbleSort {
     }
     // Метод сортировки массива пузырьком
     private static void bubbleSort(int[] array) {
-        int n = array.length;
+        int n = array.length; // Создается переменная n, которая равна длине массива
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
