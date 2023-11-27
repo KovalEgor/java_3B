@@ -5,16 +5,17 @@
 //3. Количества периодов
 //Реализовать обратное действие. Посчитать каким должен быть процент, чтобы от Числа1 дойти до Числа2 за N периодов.
 
-
-
 import java.util.Scanner;
 public class CompoundInterestCalculator {
     public static void main(String[] args) {
+        //Создается объект класса `Scanner` для считывания данных из консоли
         Scanner scanner = new Scanner(System.in);
         System.out.println("Выберите действие:");
         System.out.println("1. Вычислить будущую сумму по введенным данным");
         System.out.println("2. Вычислить процент для достижения заданной суммы");
+        //Происходит считывание целочисленного значения, которое определяет выбор пользователя.
         int choice = scanner.nextInt();
+        //В зависимости от выбора пользователя происходит вызов метода `calculateFutureValue` или `calculateRequiredRate`, либо выводится сообщение о некорректном выборе.
         if (choice == 1) {
             calculateFutureValue();
         } else if (choice == 2) {
@@ -23,6 +24,7 @@ public class CompoundInterestCalculator {
             System.out.println("Некорректный выбор.");
         }
     }
+    //метод для вычисления будущей суммы.
     private static void calculateFutureValue() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите начальную сумму (Число): ");
@@ -34,6 +36,7 @@ public class CompoundInterestCalculator {
         double futureValue = principal * Math.pow(1 + rate, periods);
         System.out.println("Будущая сумма: " + futureValue);
     }
+    //метод для вычисления необходимого процента
     private static void calculateRequiredRate() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите начальную сумму (Число1): ");
