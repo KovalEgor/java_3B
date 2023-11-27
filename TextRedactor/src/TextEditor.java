@@ -20,9 +20,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+
+//объявление класса TextEditor, который наследуется от класса JFrame.
 public class TextEditor extends JFrame {
-    private final JTextArea textArea;
-    private final JFileChooser fileChooser;
+    private final JTextArea textArea;//объявление переменной textArea типа JTextArea
+    private final JFileChooser fileChooser;//объявление переменной fileChooser типа JFileChooser
+    //объявление конструктора класса TextEditor
     public TextEditor() {
         setTitle("Текстовый редактор");
         setSize(800, 600);
@@ -46,13 +49,13 @@ public class TextEditor extends JFrame {
         openItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                openFile();
+                openFile();//Этот метод отвечает за открытие файла.
             }
         });
         saveItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                saveFile();
+                saveFile();//Этот метод отвечает за сохранение файла
             }
         });
         exitItem.addActionListener(new ActionListener() {
