@@ -1,5 +1,5 @@
+//Этот код реализует игру "21" с использованием графического интерфейса на Java и включает в себя все необходимые компоненты и методы для функционирования игры.
 package org.example;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,18 +20,15 @@ public class main {
     private Player player1, player2;
     private Player currentPlayer;
     private JComboBox<String> playerSelector;
-
     public main() {
         initializeUI();
         initializeDecks();
     }
-
     private void initializeUI() {
         frame = new JFrame("21");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 400);
         frame.setLayout(new FlowLayout());
-
         shuffleButton = new JButton("Shuffle");
         shuffleButton.addActionListener(new ActionListener() {
             @Override
@@ -39,7 +36,6 @@ public class main {
                 shuffleDeck();
             }
         });
-
         dealButton = new JButton("Deal");
         dealButton.addActionListener(new ActionListener() {
             @Override
@@ -47,12 +43,10 @@ public class main {
                 dealCard();
             }
         });
-
         cardDisplay = new JTextArea(10, 30);
         cardDisplay.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(cardDisplay);
         cardsLeftLabel = new JLabel("Cards left: 0");
-
         newGameButton = new JButton("New Game");
         newGameButton.addActionListener(new ActionListener() {
             @Override
@@ -60,14 +54,11 @@ public class main {
                 startNewGame();
             }
         });
-
         player1 = new Player("Player 1");
         player2 = new Player("Player 2");
         currentPlayer = player1;
-
         playerDisplay = new JTextArea(5, 30);
         playerDisplay.setEditable(false);
-
         String[] playerNames = {"Player 1", "Player 2"};
         playerSelector = new JComboBox<>(playerNames);
         playerSelector.addActionListener(new ActionListener() {
@@ -78,7 +69,6 @@ public class main {
                 currentPlayer = playerName.equals("Player 1") ? player1 : player2;
             }
         });
-
         frame.getContentPane().add(shuffleButton);
         frame.getContentPane().add(dealButton);
         frame.getContentPane().add(scrollPane);
@@ -87,13 +77,11 @@ public class main {
         frame.getContentPane().add(new JLabel("Select Player:"));
         frame.getContentPane().add(playerSelector);
         frame.getContentPane().add(new JScrollPane(playerDisplay));
-
         frame.setVisible(true);
     }
     private void initializeDecks() {
         String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
         String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
-
         // Создаем базовую колоду
         List<Card> baseDeck = new ArrayList<>();
         for (String suit : suits) {
@@ -123,7 +111,6 @@ public class main {
         shuffleButton.setEnabled(true);
         shuffleButton.setVisible(true);
         dealButton.setVisible(true);
-
         shuffleDeck();
     }
     private void shuffleDeck() {
@@ -139,7 +126,6 @@ public class main {
             Card card = currentDeck.get(cardIndex);
             currentPlayer.addCard(card);
             shuffleButton.setEnabled(false);
-
             if (player1.getPoints() == 21 && player2.getPoints() == 21) {
                 playerDisplay.setText("Draw!");
                 shuffleButton.setVisible(false);
@@ -163,17 +149,14 @@ public class main {
         private final String name;
         private final List<Card> hand;
         private int points;
-
         public Player(String name) {
             this.name = name;
             hand = new ArrayList<>();
             points = 0;
         }
-
         public String getName() {
             return name;
         }
-
         public void addCard(Card card) {
             hand.add(card);
             points += card.getPoints();
@@ -181,16 +164,13 @@ public class main {
                 points -= 10;
             }
         }
-
         public void resetPoints() {
             points = 0;
             hand.clear();
         }
-
         public int getPoints() {
             return points;
         }
-
         @Override
         public String toString() {
             return name + " Points: " + points + "\n" + hand.stream().map(Card::toString)
@@ -203,16 +183,13 @@ public class main {
     static class Card {
         private final String suit; // Масть карты
         private final String rank; // Ранг карты
-
         public Card(String rank, String suit) {
             this.rank = rank;
             this.suit = suit;
         }
-
         public String getRank() {
             return rank;
         }
-
         public int getPoints() {
             switch (rank) {
                 case "Ace":
