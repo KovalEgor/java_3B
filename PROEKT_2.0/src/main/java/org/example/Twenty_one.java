@@ -1,16 +1,20 @@
-//Этот код реализует игру "21" с использованием графического интерфейса на Java и включает в себя все необходимые компоненты и методы для функционирования игры.
+//Р­С‚РѕС‚ РєРѕРґ СЂРµР°Р»РёР·СѓРµС‚ РёРіСЂСѓ "21" СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР° РЅР° Java Рё РІРєР»СЋС‡Р°РµС‚ РІ СЃРµР±СЏ РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹ Рё РјРµС‚РѕРґС‹ РґР»СЏ С„СѓРЅРєС†РёРѕРЅРёСЂРѕРІР°РЅРёСЏ РёРіСЂС‹, 
+//Р° С‚Р°РєР¶Рµ Рё СЂР°Р±РѕС‚Сѓ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С… SQLite РґР»СЏ РѕС‚СЃР»РµР¶РёРІР°РЅРёСЏ СЃС‚Р°С‚РёСЃС‚РёРєРё РёРіСЂРѕРєРѕРІ Рё РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЂРµР№С‚РёРЅРіР°.
 package org.example;
-//импорт необходимых библиотек
-
-import javax.swing.*;
-import java.awt.*;
-import java.sql.*;
+//РёРјРїРѕСЂС‚ РЅРµРѕР±С…РѕРґРёРјС‹С… Р±РёР±Р»РёРѕС‚РµРє
+import javax.swing.*; //РёРјРїРѕСЂС‚ РєР»Р°СЃСЃРѕРІ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°.
+import java.awt.*; //РёРјРїРѕСЂС‚ РєР»Р°СЃСЃРѕРІ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЌР»РµРјРµРЅС‚Р°РјРё РёРЅС‚РµСЂС„РµР№СЃР°.
+import java.sql.*; //РёРјРїРѕСЂС‚ РєР»Р°СЃСЃРѕРІ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С….
+//РёРјРїРѕСЂС‚ РєР»Р°СЃСЃРѕРІ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєРѕР»Р»РµРєС†РёСЏРјРё (СЃРїРёСЃРєР°РјРё).
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+//РЎРѕР·РґР°РЅРёРµ РєР»Р°СЃСЃР° Twenty_one, РєРѕС‚РѕСЂС‹Р№ СЂРµР°Р»РёР·СѓРµС‚ РёРіСЂСѓ:
+//РћР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С… Рё РєРѕРјРїРѕРЅРµРЅС‚РѕРІ РёРЅС‚РµСЂС„РµР№СЃР°, С‚Р°РєРёС… РєР°Рє РєРЅРѕРїРєРё, С‚РµРєСЃС‚РѕРІС‹Рµ РїРѕР»СЏ, РјРµС‚РєРё, СЃРїРёСЃРєРё Рё С‚.Рґ.
+//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРїРёСЃРєР° matrices РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РєРѕР»РѕРґ РєР°СЂС‚.
+//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРїРёСЃРєР° currentDeck РґР»СЏ С…СЂР°РЅРµРЅРёСЏ С‚РµРєСѓС‰РµР№ РєРѕР»РѕРґС‹ РєР°СЂС‚.
+//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃС‡РµС‚С‡РёРєР° cardIndex РґР»СЏ РѕС‚СЃР»РµР¶РёРІР°РЅРёСЏ РёРЅРґРµРєСЃР° С‚РµРєСѓС‰РµР№ РєР°СЂС‚С‹.
 public class Twenty_one {
-
     private JLabel currentPlayerLabel;
     private JButton shuffleButton;
     private JButton dealButton;
@@ -22,16 +26,15 @@ public class Twenty_one {
     private Player player1, player2;
     private Player currentPlayer;
     private JFrame frame;
-
     public Twenty_one() {
         initializeDecks();
         initializeUI();
     }
-    private Connection connect() {
+    private Connection connect() { //РѕС‚РІРµС‡Р°РµС‚ Р·Р° РїРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С… SQLite.
         try {
-            Class.forName("org.sqlite.JDBC"); // Загрузка драйвера
+            Class.forName("org.sqlite.JDBC"); // Р—Р°РіСЂСѓР·РєР° РґСЂР°Р№РІРµСЂР°
         } catch (ClassNotFoundException e) {
-            System.err.println("Не удалось загрузить драйвер SQLite JDBC: " + e.getMessage());
+            System.err.println("РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ РґСЂР°Р№РІРµСЂ SQLite JDBC: " + e.getMessage());
             return null;
         }
         String url = "jdbc:sqlite:src/main/java/org/example/rating.db";
@@ -39,33 +42,31 @@ public class Twenty_one {
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.err.println("Ошибка подключения к базе данных: " + e.getMessage());
+            System.err.println("РћС€РёР±РєР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С…: " + e.getMessage());
         }
         return conn;
     }
-    private void createNewTable() {
+    private void createNewTable() { //СЃРѕР·РґР°РµС‚ С‚Р°Р±Р»РёС†Сѓ "players" РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С…, РµСЃР»Рё РѕРЅР° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… Рѕ РёРіСЂРѕРєР°С….
         String sql = """
                 CREATE TABLE IF NOT EXISTS players (
                  name text PRIMARY KEY,
                  games_played integer NOT NULL,
                  games_won integer NOT NULL
                 );""";
-
         try (Connection conn = this.connect()) {
             assert conn != null;
             try (Statement stmt = conn.createStatement()) {
                 stmt.execute(sql);
             }
         } catch (SQLException e) {
-            System.err.println("Ошибка при создании таблицы: " + e.getMessage());
+            System.err.println("РћС€РёР±РєР° РїСЂРё СЃРѕР·РґР°РЅРёРё С‚Р°Р±Р»РёС†С‹: " + e.getMessage());
         }
     }
-    private void updatePlayerStats(String playerName, boolean won) {
+    private void updatePlayerStats(String playerName, boolean won) { //РѕР±РЅРѕРІР»СЏРµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РёРіСЂРѕРєР° (РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‹РіСЂР°РЅРЅС‹С… РёРіСЂ Рё РїРѕР±РµРґ) РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С….
         String sql = "INSERT INTO players (name, games_played, games_won) VALUES(?, 1, ?) "
                 + "ON CONFLICT(name) DO UPDATE SET "
                 + "games_played = games_played + 1, "
                 + "games_won = games_won + CASE WHEN excluded.games_won = 1 THEN 1 ELSE 0 END;";
-
         try (Connection conn = this.connect()) {
             assert conn != null;
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -77,7 +78,7 @@ public class Twenty_one {
             System.out.println(e.getMessage());
         }
     }
-    //Метод initializeUI() инициализирует элементы пользовательского интерфейса, такие как окно, кнопки, текстовые поля и др.
+    //РњРµС‚РѕРґ initializeUI() РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РёРЅС‚РµСЂС„РµР№СЃ, СЃРѕР·РґР°РІР°СЏ РѕРєРЅРѕ СЃ РєРЅРѕРїРєР°РјРё Рё С‚РµРєСЃС‚РѕРІС‹РјРё РїРѕР»СЏРјРё РґР»СЏ РІРІРѕРґР° РёРјРµРЅРё РёРіСЂРѕРєРѕРІ, РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєР°СЂС‚ Рё СЃС‚Р°С‚СѓСЃР° РёРіСЂС‹.
     private void initializeUI() {
 //
         frame = new JFrame("21");
@@ -86,12 +87,12 @@ public class Twenty_one {
         frame.setLayout(new FlowLayout());
         frame.getContentPane().setBackground(Color.white);
 //
-        shuffleButton = new JButton("Перемешать");
+        shuffleButton = new JButton("РџРµСЂРµРјРµС€Р°С‚СЊ");
         shuffleButton.addActionListener(e -> shuffleDeck());
         shuffleButton.setBackground(Color.LIGHT_GRAY);
         shuffleButton.setForeground(Color.BLACK);
 //
-        dealButton = new JButton("Сдать");
+        dealButton = new JButton("РЎРґР°С‚СЊ");
         dealButton.addActionListener(e -> dealCard());
         dealButton.setBackground(Color.LIGHT_GRAY);
         dealButton.setForeground(Color.BLACK);
@@ -99,9 +100,9 @@ public class Twenty_one {
         cardDisplay = new JTextArea(10, 30);
         cardDisplay.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(cardDisplay);
-        cardsLeftLabel = new JLabel("Карт осталось: 0");
+        cardsLeftLabel = new JLabel("РљР°СЂС‚ РѕСЃС‚Р°Р»РѕСЃСЊ: 0");
 //
-        JButton newGameButton = new JButton("Новая игра");
+        JButton newGameButton = new JButton("РќРѕРІР°СЏ РёРіСЂР°");
         newGameButton.setBackground(Color.LIGHT_GRAY);
         newGameButton.setForeground(Color.BLACK);
         newGameButton.addActionListener(e -> startNewGame());
@@ -117,25 +118,25 @@ public class Twenty_one {
         frame.getContentPane().add(newGameButton);
         frame.getContentPane().add(new JScrollPane(playerDisplay));
 //
-        JButton rulesButton = new JButton("Правила игры");
+        JButton rulesButton = new JButton("РџСЂР°РІРёР»Р° РёРіСЂС‹");
         rulesButton.addActionListener(e -> showRules());
         rulesButton.setBackground(Color.LIGHT_GRAY);
         rulesButton.setForeground(Color.BLACK);
         frame.getContentPane().add(rulesButton);
 //
-        currentPlayerLabel = new JLabel("Текущий игрок: ");
+        currentPlayerLabel = new JLabel("РўРµРєСѓС‰РёР№ РёРіСЂРѕРє: ");
         frame.getContentPane().add(currentPlayerLabel);
 //
         startNewGame();
         frame.setVisible(true);
 //
-        JButton ratingButton = new JButton("Рейтинг");
+        JButton ratingButton = new JButton("Р РµР№С‚РёРЅРі");
         ratingButton.setBackground(Color.LIGHT_GRAY);
         ratingButton.setForeground(Color.BLACK);
         ratingButton.addActionListener(e -> showRating());
         frame.getContentPane().add(ratingButton);
     }
-    //Метод initializeDecks() создает и инициализирует колоду карт для игры.
+    //РњРµС‚РѕРґ initializeDecks() РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РєРѕР»РѕРґС‹ РєР°СЂС‚ РґР»СЏ РёРіСЂС‹, СЃРѕР·РґР°РІР°СЏ Р±Р°Р·РѕРІСѓСЋ РєРѕР»РѕРґСѓ Рё РїРµСЂРµРјРµС€РёРІР°СЏ РµРµ.
     private void initializeDecks() {
         String[] suits = {"Hearts", "Diamonds", "Clubs", "Spades"};
         String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
@@ -152,32 +153,32 @@ public class Twenty_one {
             matrices.add(shuffledDeck);
         }
     }
-    //Метод updateCardsLeftLabel() обновляет текстовую метку, отображающую количество оставшихся карт в колоде.
+    //РњРµС‚РѕРґ updateCardsLeftLabel() РѕР±РЅРѕРІР»СЏРµС‚ РјРµС‚РєСѓ, РѕС‚РѕР±СЂР°Р¶Р°СЋС‰СѓСЋ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕСЃС‚Р°РІС€РёС…СЃСЏ РєР°СЂС‚ РІ РєРѕР»РѕРґРµ.
     private void updateCardsLeftLabel() {
         if (currentDeck != null) {
-            cardsLeftLabel.setText("Осталось карт: " + (currentDeck.size() - cardIndex));
+            cardsLeftLabel.setText("РћСЃС‚Р°Р»РѕСЃСЊ РєР°СЂС‚: " + (currentDeck.size() - cardIndex));
         } else {
-            cardsLeftLabel.setText("Осталось карт: 0");
+            cardsLeftLabel.setText("РћСЃС‚Р°Р»РѕСЃСЊ РєР°СЂС‚: 0");
         }
     }
-    //Метод startNewGame() начинает новую игру, сбрасывая счет игроков и подготавливая интерфейс для начала игры.
+    //РњРµС‚РѕРґ startNewGame() РЅР°С‡РёРЅР°РµС‚ РЅРѕРІСѓСЋ РёРіСЂСѓ, СЃР±СЂР°СЃС‹РІР°СЏ СЃС‡РµС‚ РёРіСЂРѕРєРѕРІ, Р·Р°РїСЂР°С€РёРІР°СЏ РёС… РёРјРµРЅР° Рё РїРѕРґРіРѕС‚Р°РІР»РёРІР°СЏ РёРЅС‚РµСЂС„РµР№СЃ РґР»СЏ РЅР°С‡Р°Р»Р° РёРіСЂС‹.
     private void startNewGame() {
-        String name1 = JOptionPane.showInputDialog(frame, "Введите имя Игрока 1");
-        String name2 = JOptionPane.showInputDialog(frame, "Введите имя Игрока 2");
-        player1 = new Player(name1 == null || name1.isEmpty() ? "Игрок 1" : name1);
-        player2 = new Player(name2 == null || name2.isEmpty() ? "Игрок 2" : name2);
-        currentPlayer = player1; // Установка первого введенного игрока как текущего
-        currentPlayerLabel.setText("Текущий игрок: " + currentPlayer.getName());
+        String name1 = JOptionPane.showInputDialog(frame, "Р’РІРµРґРёС‚Рµ РёРјСЏ РРіСЂРѕРєР° 1");
+        String name2 = JOptionPane.showInputDialog(frame, "Р’РІРµРґРёС‚Рµ РёРјСЏ РРіСЂРѕРєР° 2");
+        player1 = new Player(name1 == null || name1.isEmpty() ? "РРіСЂРѕРє 1" : name1);
+        player2 = new Player(name2 == null || name2.isEmpty() ? "РРіСЂРѕРє 2" : name2);
+        currentPlayer = player1; // РЈСЃС‚Р°РЅРѕРІРєР° РїРµСЂРІРѕРіРѕ РІРІРµРґРµРЅРЅРѕРіРѕ РёРіСЂРѕРєР° РєР°Рє С‚РµРєСѓС‰РµРіРѕ
+        currentPlayerLabel.setText("РўРµРєСѓС‰РёР№ РёРіСЂРѕРє: " + currentPlayer.getName());
         player1.resetPoints();
         player2.resetPoints();
         playerDisplay.setText("");
-        cardDisplay.setText("Начало новой игры. Перемешайте и сдайте.");
+        cardDisplay.setText("РќР°С‡Р°Р»Рѕ РЅРѕРІРѕР№ РёРіСЂС‹. РџРµСЂРµРјРµС€Р°Р№С‚Рµ Рё СЃРґР°Р№С‚Рµ.");
         shuffleButton.setEnabled(true);
         shuffleButton.setVisible(true);
         dealButton.setVisible(true);
         shuffleDeck();
     }
-    //Метод shuffleDeck() перемешивает колоду карт и обновляет текущую колоду.
+    //РњРµС‚РѕРґ shuffleDeck() РїРµСЂРµРјРµС€РёРІР°РµС‚ РєРѕР»РѕРґСѓ РєР°СЂС‚ Рё РѕР±РЅРѕРІР»СЏРµС‚ С‚РµРєСѓС‰СѓСЋ РєРѕР»РѕРґСѓ.
     private void shuffleDeck() {
         if (!matrices.isEmpty()) {
             long currentTime = System.currentTimeMillis() % 100;
@@ -187,10 +188,10 @@ public class Twenty_one {
             updateCardsLeftLabel();
             cardDisplay.setText("");
         } else {
-            JOptionPane.showMessageDialog(frame, "Ошибка: Колода не инициализирована", "Ошибка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "РћС€РёР±РєР°: РљРѕР»РѕРґР° РЅРµ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅР°", "РћС€РёР±РєР°", JOptionPane.ERROR_MESSAGE);
         }
     }
-    //Метод dealCard() раздает карту текущему игроку, обновляет интерфейс и проверяет условия завершения игры.
+    //РњРµС‚РѕРґ dealCard() СЂР°Р·РґР°РµС‚ РєР°СЂС‚Сѓ С‚РµРєСѓС‰РµРјСѓ РёРіСЂРѕРєСѓ, РѕР±РЅРѕРІР»СЏСЏ РёРЅС‚РµСЂС„РµР№СЃ Рё РїСЂРѕРІРµСЂСЏСЏ СѓСЃР»РѕРІРёСЏ Р·Р°РІРµСЂС€РµРЅРёСЏ РёРіСЂС‹.
     private void dealCard() {
         if (currentDeck != null && cardIndex < currentDeck.size()) {
             Card card = currentDeck.get(cardIndex++);
@@ -198,7 +199,7 @@ public class Twenty_one {
             updateGameStatus();
         }
     }
-    private void updateGameStatus() {
+    private void updateGameStatus() { //РѕР±РЅРѕРІР»СЏРµС‚ СЃС‚Р°С‚СѓСЃ РёРіСЂС‹, РїСЂРѕРІРµСЂСЏСЏ Р·Р°РІРµСЂС€РµРЅР° Р»Рё РѕРЅР°, Рё РѕРїСЂРµРґРµР»СЏРµС‚ РїРѕР±РµРґРёС‚РµР»СЏ.
         shuffleButton.setEnabled(false);
         boolean gameEnded = false;
         Player winner = null;
@@ -206,16 +207,16 @@ public class Twenty_one {
         if (player1.getPoints() >= 21 || player2.getPoints() >= 21) {
             gameEnded = true;
             if (player1.getPoints() > 21 && player2.getPoints() > 21) {
-                playerDisplay.setText("Оба игрока проиграли.");
+                playerDisplay.setText("РћР±Р° РёРіСЂРѕРєР° РїСЂРѕРёРіСЂР°Р»Рё.");
             } else if (player1.getPoints() == 21 && player2.getPoints() == 21) {
-                playerDisplay.setText("Ничья! У обоих игроков 21 очко.");
+                playerDisplay.setText("РќРёС‡СЊСЏ! РЈ РѕР±РѕРёС… РёРіСЂРѕРєРѕРІ 21 РѕС‡РєРѕ.");
             } else {
                 winner = player1.getPoints() <= 21 ? player1 : player2;
-                playerDisplay.setText(winner.getName() + " выиграл в двадцать одно!");
+                playerDisplay.setText(winner.getName() + " РІС‹РёРіСЂР°Р» РІ РґРІР°РґС†Р°С‚СЊ РѕРґРЅРѕ!");
             }
         } else {
             cardDisplay.setText(currentPlayer.toString());
-            playerDisplay.setText("Игрок 1: " + player1.getPoints() + "\nИгрок 2: " + player2.getPoints());
+            playerDisplay.setText("РРіСЂРѕРє 1: " + player1.getPoints() + "\nРРіСЂРѕРє 2: " + player2.getPoints());
             switchPlayers();
         }
 
@@ -226,15 +227,15 @@ public class Twenty_one {
             updatePlayerStats(player2.getName(), winner == player2);
         }
     }
-    private void switchPlayers() {
+    private void switchPlayers() { //РїРµСЂРµРєР»СЋС‡Р°РµС‚ С‚РµРєСѓС‰РµРіРѕ РёРіСЂРѕРєР° РјРµР¶РґСѓ РёРіСЂРѕРєР°РјРё 1 Рё 2.
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
-        currentPlayerLabel.setText("Текущий игрок: " + currentPlayer.getName());
+        currentPlayerLabel.setText("РўРµРєСѓС‰РёР№ РёРіСЂРѕРє: " + currentPlayer.getName());
     }
-    private void showRating() {
-        String[] options = {"Имя", "Количество игр", "Процент побед"};
+    private void showRating() { //РѕС‚РѕР±СЂР°Р¶Р°РµС‚ СЂРµР№С‚РёРЅРі РёРіСЂРѕРєРѕРІ, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЏ РѕРїС†РёРё РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ РёРјРµРЅРё, РєРѕР»РёС‡РµСЃС‚РІСѓ РёРіСЂ Рё РїСЂРѕС†РµРЅС‚Сѓ РїРѕР±РµРґ.
+        String[] options = {"РРјСЏ", "РљРѕР»РёС‡РµСЃС‚РІРѕ РёРіСЂ", "РџСЂРѕС†РµРЅС‚ РїРѕР±РµРґ"};
         int choice = JOptionPane.showOptionDialog(frame,
-                "Выберите тип сортировки:",
-                "Сортировка рейтинга",
+                "Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї СЃРѕСЂС‚РёСЂРѕРІРєРё:",
+                "РЎРѕСЂС‚РёСЂРѕРІРєР° СЂРµР№С‚РёРЅРіР°",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -242,11 +243,11 @@ public class Twenty_one {
                 options[0]);
 
         String orderBy = switch (choice) {
-            case 1 -> // Количество игр
+            case 1 -> // РљРѕР»РёС‡РµСЃС‚РІРѕ РёРіСЂ
                     "games_played DESC";
-            case 2 -> // Процент побед
+            case 2 -> // РџСЂРѕС†РµРЅС‚ РїРѕР±РµРґ
                     "(CAST(games_won AS DOUBLE) / games_played) DESC";
-            default -> // Имя
+            default -> // РРјСЏ
                     "name";
         };
         try (Connection conn = this.connect()) {
@@ -254,16 +255,16 @@ public class Twenty_one {
             try (Statement stmt = conn.createStatement();
                  ResultSet rs = stmt.executeQuery("SELECT * FROM players ORDER BY " + orderBy)) {
 
-                StringBuilder sb = new StringBuilder("Рейтинг игроков:\n");
+                StringBuilder sb = new StringBuilder("Р РµР№С‚РёРЅРі РёРіСЂРѕРєРѕРІ:\n");
                 while (rs.next()) {
                     String name = rs.getString("name");
                     int gamesPlayed = rs.getInt("games_played");
                     int gamesWon = rs.getInt("games_won");
                     double winRate = gamesPlayed > 0 ? (double) gamesWon / gamesPlayed * 100 : 0;
 
-                    sb.append(name).append(" - Игр: ").append(gamesPlayed)
-                            .append(", Побед: ").append(gamesWon)
-                            .append(", Выигрыш: ").append(String.format("%.2f%%", winRate)).append("\n");
+                    sb.append(name).append(" - РРіСЂ: ").append(gamesPlayed)
+                            .append(", РџРѕР±РµРґ: ").append(gamesWon)
+                            .append(", Р’С‹РёРіСЂС‹С€: ").append(String.format("%.2f%%", winRate)).append("\n");
                 }
                 JOptionPane.showMessageDialog(frame, sb.toString());
             }
@@ -271,23 +272,22 @@ public class Twenty_one {
             System.out.println(e.getMessage());
         }
     }
-    private void showRules() {
+    private void showRules() { //РѕС‚РѕР±СЂР°Р¶Р°РµС‚ РїСЂР°РІРёР»Р° РёРіСЂС‹ РІ РґРёР°Р»РѕРіРѕРІРѕРј РѕРєРЅРµ.
         JOptionPane.showMessageDialog(frame,
                 """
-                        Правила игры в 21 (Блэк джек):
-                        - Цель игры - набрать 21 очко или ближайшее к нему количество очков, но не больше.
-                        - Все карты от 2 до 10 имеют номинальное значение.
-                        - Валет, Дама и Король оцениваются в 10 очков.
-                        - Туз может быть как 1, так и 11 очков, в зависимости от ситуации.
-                        - Игроки по очереди берут карты из колоды, чтобы улучшить свою комбинацию.
-                        - Если игрок набирает более 21 очка, он проигрывает (перебор).
-                        - Если оба игрока набрали более 21 очка, объявляется ничья.
-                        - Если один из игроков набирает ровно 21 очко, он выигрывает (Блэк джек).
+                        РџСЂР°РІРёР»Р° РёРіСЂС‹ РІ 21 (Р‘Р»СЌРє РґР¶РµРє):
+                        - Р¦РµР»СЊ РёРіСЂС‹ - РЅР°Р±СЂР°С‚СЊ 21 РѕС‡РєРѕ РёР»Рё Р±Р»РёР¶Р°Р№С€РµРµ Рє РЅРµРјСѓ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‡РєРѕРІ, РЅРѕ РЅРµ Р±РѕР»СЊС€Рµ.
+                        - Р’СЃРµ РєР°СЂС‚С‹ РѕС‚ 2 РґРѕ 10 РёРјРµСЋС‚ РЅРѕРјРёРЅР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.
+                        - Р’Р°Р»РµС‚, Р”Р°РјР° Рё РљРѕСЂРѕР»СЊ РѕС†РµРЅРёРІР°СЋС‚СЃСЏ РІ 10 РѕС‡РєРѕРІ.
+                        - РўСѓР· РјРѕР¶РµС‚ Р±С‹С‚СЊ РєР°Рє 1, С‚Р°Рє Рё 11 РѕС‡РєРѕРІ, РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЃРёС‚СѓР°С†РёРё.
+                        - РРіСЂРѕРєРё РїРѕ РѕС‡РµСЂРµРґРё Р±РµСЂСѓС‚ РєР°СЂС‚С‹ РёР· РєРѕР»РѕРґС‹, С‡С‚РѕР±С‹ СѓР»СѓС‡С€РёС‚СЊ СЃРІРѕСЋ РєРѕРјР±РёРЅР°С†РёСЋ.
+                        - Р•СЃР»Рё РёРіСЂРѕРє РЅР°Р±РёСЂР°РµС‚ Р±РѕР»РµРµ 21 РѕС‡РєР°, РѕРЅ РїСЂРѕРёРіСЂС‹РІР°РµС‚ (РїРµСЂРµР±РѕСЂ).
+                        - Р•СЃР»Рё РѕРґРёРЅ РёР· РёРіСЂРѕРєРѕРІ РЅР°Р±РёСЂР°РµС‚ СЂРѕРІРЅРѕ 21 РѕС‡РєРѕ, РѕРЅ РІС‹РёРіСЂС‹РІР°РµС‚ (Р‘Р»СЌРє РґР¶РµРє).
                         """,
-                "Правила игры", JOptionPane.INFORMATION_MESSAGE);
+                "РџСЂР°РІРёР»Р° РёРіСЂС‹", JOptionPane.INFORMATION_MESSAGE);
     }
-    public static void main(String[] args) {
-        Twenty_one game = new Twenty_one(); // Создание экземпляра игры
-        game.createNewTable(); // Вызов метода для создания таблицы в базе данных
+    public static void main(String[] args) { //СЌС‚Рѕ С‚РѕС‡РєР° РІС…РѕРґР° РІ РїСЂРёР»РѕР¶РµРЅРёРµ, СЃРѕР·РґР°РµС‚ СЌРєР·РµРјРїР»СЏСЂ РёРіСЂС‹ Рё РІС‹Р·С‹РІР°РµС‚ РјРµС‚РѕРґ createNewTable() РґР»СЏ СЃРѕР·РґР°РЅРёСЏ С‚Р°Р±Р»РёС†С‹ РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С….
+        Twenty_one game = new Twenty_one(); // РЎРѕР·РґР°РЅРёРµ СЌРєР·РµРјРїР»СЏСЂР° РёРіСЂС‹
+        game.createNewTable(); // Р’С‹Р·РѕРІ РјРµС‚РѕРґР° РґР»СЏ СЃРѕР·РґР°РЅРёСЏ С‚Р°Р±Р»РёС†С‹ РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С…
     }
 }
