@@ -46,7 +46,7 @@ public class Twenty_one {
         }
         return conn;
     }
-    private void createNewTable() { //создает таблицу "players" в базе данных, если она не существует, для хранения данных о игроках.
+    private void createNewTable() { //создает таблицу "players" в базе данных, если она не существует, для хранения данных об игроках.
         String sql = """
                 CREATE TABLE IF NOT EXISTS players (
                  name text PRIMARY KEY,
