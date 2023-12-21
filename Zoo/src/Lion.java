@@ -11,6 +11,6 @@ public class Lion extends Mammal {
 
     @Override
     public void giveBirth() {
-        System.out.println("Лев рожает детенышей.");
+        System.out.println("Львица рожает детенышей.");
     }
 }
