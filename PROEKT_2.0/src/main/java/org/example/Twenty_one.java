@@ -79,62 +79,66 @@ public class Twenty_one {
         }
     }
     //Метод initializeUI() инициализирует пользовательский интерфейс, создавая окно с кнопками и текстовыми полями для ввода имени игроков, отображения карт и статуса игры.
-    private void initializeUI() {
-//
-        frame = new JFrame("21");
+private void initializeUI() {
+//создание окна
+        frame = new JFrame("Двадцать одно");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 390);
+        frame.setSize(450, 450);
         frame.setLayout(new FlowLayout());
         frame.getContentPane().setBackground(Color.white);
-//
+        frame.setResizable(false);
+//создание кнопки перемешать
         shuffleButton = new JButton("Перемешать");
+        shuffleButton.setSize(50, 20);
         shuffleButton.addActionListener(e -> shuffleDeck());
         shuffleButton.setBackground(Color.LIGHT_GRAY);
         shuffleButton.setForeground(Color.BLACK);
-//
+//создание кнопки сдать
         dealButton = new JButton("Сдать");
+        shuffleButton.setSize(50, 20);
         dealButton.addActionListener(e -> dealCard());
         dealButton.setBackground(Color.LIGHT_GRAY);
         dealButton.setForeground(Color.BLACK);
-//
+//создание текстового блока
+        currentPlayerLabel = new JLabel("Текущий игрок: ");
+        frame.getContentPane().add(currentPlayerLabel);
+//создание текстового блока
         cardDisplay = new JTextArea(10, 30);
         cardDisplay.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(cardDisplay);
         cardsLeftLabel = new JLabel("Карт осталось: 0");
-//
+//создание кнопки новая игра
         JButton newGameButton = new JButton("Новая игра");
         newGameButton.setBackground(Color.LIGHT_GRAY);
         newGameButton.setForeground(Color.BLACK);
         newGameButton.addActionListener(e -> startNewGame());
-//
+//создание текстового блока
         playerDisplay = new JTextArea(5, 30);
         playerDisplay.setEditable(false);
         playerDisplay.setBackground(Color.white);
-//
+//добавление в панель кнопок и текстовых блоков
         frame.getContentPane().add(shuffleButton);
         frame.getContentPane().add(dealButton);
         frame.getContentPane().add(scrollPane);
         frame.getContentPane().add(cardsLeftLabel);
         frame.getContentPane().add(newGameButton);
         frame.getContentPane().add(new JScrollPane(playerDisplay));
-//
+//создание кнопки правила игры
         JButton rulesButton = new JButton("Правила игры");
         rulesButton.addActionListener(e -> showRules());
         rulesButton.setBackground(Color.LIGHT_GRAY);
         rulesButton.setForeground(Color.BLACK);
         frame.getContentPane().add(rulesButton);
-//
-        currentPlayerLabel = new JLabel("Текущий игрок: ");
-        frame.getContentPane().add(currentPlayerLabel);
-//
-        startNewGame();
-        frame.setVisible(true);
-//
+//создание кнопки рейтинг
         JButton ratingButton = new JButton("Рейтинг");
         ratingButton.setBackground(Color.LIGHT_GRAY);
         ratingButton.setForeground(Color.BLACK);
         ratingButton.addActionListener(e -> showRating());
         frame.getContentPane().add(ratingButton);
+//запуск игры после обработки и создания интерфейса
+        startNewGame();
+        frame.setVisible(true);
+
     }
     //Метод initializeDecks() инициализирует колоды карт для игры, создавая базовую колоду и перемешивая ее.
     private void initializeDecks() {
